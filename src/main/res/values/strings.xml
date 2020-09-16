@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BlackJack</string>
+    <string name="new_game">NEW GAME</string>
+    <string name="hit">HIT</string>
+    <string name="stop">STOP</string>
+    <string name="dealer_tag">Dealer</string>
+    <string name="player_tag">Player</string>
+    <string name="score_tag">Player  -  SCORE  -  Dealer</string>
+</resources>
