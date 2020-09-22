@@ -2,8 +2,6 @@ package com.jackcannon.blackjack;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,8 +16,10 @@ public class MainActivity extends AppCompatActivity {
 
     TextView playerScore;
     TextView dealerScore;
+    TextView winnerField;
 
     Button hitButton;
+    Button stopButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +48,10 @@ public class MainActivity extends AppCompatActivity {
 
         playerScore = (TextView) findViewById(R.id.player_score_field);
         dealerScore = (TextView) findViewById(R.id.dealer_score_field);
+        winnerField = (TextView) findViewById(R.id.winner_field);
 
         hitButton = (Button) findViewById(R.id.hit_button);
+        stopButton = (Button) findViewById(R.id.stop_button);
 
         blackJackGame = new Game(playerCards, dealerCards, playerScore, dealerScore);
         blackJackGame.resetGame();
@@ -65,23 +67,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void hit(View view) {
-        blackJackGame.hit(blackJackGame.getPlayer());
+        blackJackGame.hit("player");
         if(blackJackGame.hit_count == 3) {
             hitButton.setEnabled(false);
         }
         if(blackJackGame.isOver()){
-            AlertDialog.Builder builder = new AlertDialog.Builder(); //TODO add parameter
-            if(blackJackGame.getWinner().equals("player")) {
-                builder.setMessage(blackJackGame.getWinner() + " Won!").setTitle("WINNER!");
-            }
-            else builder.setMessage(blackJackGame.getWinner() + " Won!").setTitle("GAME OVER");
-            AlertDialog dialog = builder.create();
-            //TODO enable the dialog later
+            winnerField.setText(blackJackGame.winner);
         }
     }
 
     public void stop(View view) {
         blackJackGame.swapPlayer();
-        hitButton.setEnabled(true);
+        if(blackJackGame.current_player.equals("dealer")) {
+            hitButton.setEnabled(false);
+            stopButton.setEnabled(false);
+            blackJackGame.executeDealerTurn();
+        }
+        else {
+            hitButton.setEnabled(true);
+            stopButton.setEnabled(true);
+        }
     }
 }

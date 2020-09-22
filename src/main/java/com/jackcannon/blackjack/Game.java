@@ -8,6 +8,7 @@ public class Game {
 
     Deck deck;
     String current_player;
+    String winner;
     ImageView[] playerCards;
     ImageView[] dealerCards;
     TextView playerScore;
@@ -36,25 +37,21 @@ public class Game {
         else current_player = "player";
     }
 
-    public String getPlayer() {
-        return current_player;
-    }
-
     public Card dealCard() {
 
         //TODO implement method to return the next card from the deck
 
     }
 
-    public boolean isOver() {
+    public void executeDealerTurn() {
 
-        //TODO implement method to determine if the game is over or not
+        //TODO implement logic for random dealer play
 
     }
 
-    public String getWinner() {
+    public boolean isOver() {
 
-        //TODO implement method to return the winner (called when the game is over)
+        //TODO implement method to determine if the game is over or not, and pick a winner
 
     }
 
