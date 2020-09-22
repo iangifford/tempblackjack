@@ -21,6 +21,10 @@ public class Game {
         return current_player;
     }
 
-    public void dealCard() {
+    public Card dealCard() {
+
+        //implement method to return the next card from the deck
+
+        return next_card;
     }
 }

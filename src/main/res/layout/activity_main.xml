@@ -11,8 +11,8 @@
         android:layout_width="320dp"
         android:layout_height="25dp"
         android:layout_marginTop="15dp"
-        android:hint="@string/score_tag"
-        android:textColorHint="@color/colorBlack"
+        android:text="@string/score_tag"
+        android:textColor="@color/colorBlack"
         android:textSize="20sp"
         android:gravity="center_vertical|center_horizontal"
         android:layout_centerHorizontal="true" />
@@ -23,7 +23,8 @@
         android:layout_height="50dp"
         android:layout_marginBottom="15dp"
         android:layout_below="@+id/score_field"
-        android:textSize="20sp"
+        android:textSize="30sp"
+        android:textColor="@color/colorBlack"
         android:layout_alignStart="@+id/score_field"
         android:gravity="center_vertical|center_horizontal" />
 
@@ -33,7 +34,8 @@
         android:layout_height="50dp"
         android:layout_marginBottom="15dp"
         android:layout_below="@+id/score_field"
-        android:textSize="20sp"
+        android:textSize="30sp"
+        android:textColor="@color/colorBlack"
         android:gravity="center_vertical|center_horizontal"
         android:layout_toEndOf="@+id/player_score_field"
         android:layout_alignEnd="@+id/score_field"
@@ -52,11 +54,11 @@
         android:id="@+id/dealer_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/dealer_tag"
+        android:text="@string/dealer_tag"
         android:layout_alignTop="@+id/game_background"
         android:layout_centerHorizontal="true"
         android:textSize="20sp"
-        android:textColorHint="@color/colorBlack"/>
+        android:textColor="@color/colorBlack"/>
 
     <TextView
         android:id="@+id/dealer_card_1"
@@ -134,11 +136,11 @@
         android:id="@+id/player_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/player_tag"
+        android:text="@string/player_tag"
         android:layout_alignBottom="@+id/game_background"
         android:layout_centerHorizontal="true"
         android:textSize="20sp"
-        android:textColorHint="@color/colorBlack"/>
+        android:textColor="@color/colorBlack"/>
 
     <TextView
         android:id="@+id/player_card_1"
