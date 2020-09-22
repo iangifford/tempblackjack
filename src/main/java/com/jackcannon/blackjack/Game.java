@@ -60,13 +60,12 @@ public class Game {
 
     public void hit(String player) {
         Card hit_card = dealCard();
+        int resource = hit_card.getImage();
 
         if (player.equals("player")) {
             for (int i = 0; i < 8; i++) {
                 if (playerCards[i].getVisibility() == View.INVISIBLE) {
-
-                    //TODO assign image corresponding to hit_card here
-
+                    playerCards[i].setImageResource(resource);
                     playerScore_int += hit_card.point_value;
                     playerScore.setText(playerScore_int);
                     playerCards[i].setVisibility(View.VISIBLE);
@@ -78,9 +77,7 @@ public class Game {
         if (player.equals("dealer")){
             for(int i=0; i < 8; i++) {
                 if(dealerCards[i].getVisibility() == View.INVISIBLE) {
-
-                    //TODO assign image corresponding to hit_card here
-
+                    playerCards[i].setImageResource(resource);
                     dealerScore_int += hit_card.point_value;
                     dealerScore.setText(dealerScore_int);
                     dealerCards[i].setVisibility(View.VISIBLE);
