@@ -1,18 +1,13 @@
 package com.jackcannon.blackjack;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
 
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,8 +18,7 @@ public class MainActivity extends AppCompatActivity {
     TextView playerScore;
     TextView dealerScore;
 
-    int playerScore_int;
-    int dealerScore_int;
+    Button hitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,64 +48,39 @@ public class MainActivity extends AppCompatActivity {
         playerScore = (TextView) findViewById(R.id.player_score_field);
         dealerScore = (TextView) findViewById(R.id.dealer_score_field);
 
-        playerScore_int = 0;
-        dealerScore_int = 0;
+        hitButton = (Button) findViewById(R.id.hit_button);
 
-        playerScore.setText(playerScore_int);
-        dealerScore.setText(dealerScore_int);
-
-
-        for(int i=0; i < 8; i++) {
-            playerCards[i].setVisibility(View.INVISIBLE);
-            dealerCards[i].setVisibility(View.INVISIBLE);
-        }
+        blackJackGame = new Game(playerCards, dealerCards, playerScore, dealerScore);
+        blackJackGame.resetGame();
     }
 
     public void new_game(View view) {
-        for(int i=0; i < 8; i++) {
-            playerCards[i].setVisibility(View.INVISIBLE);
-            dealerCards[i].setVisibility(View.INVISIBLE);
-        }
-        blackJackGame = new Game();
-        playerScore_int = 0;
-        dealerScore_int = 0;
-        playerScore.setText(playerScore_int);
-        dealerScore.setText(dealerScore_int);
+        blackJackGame.resetGame();
+        blackJackGame.hit("player");
+        blackJackGame.hit("dealer");
+        blackJackGame.hit("player");
+        blackJackGame.hit("dealer");
+        blackJackGame.hit_count = 0;
     }
 
     public void hit(View view) {
-        Card hit_card = blackJackGame.dealCard();
-
-        if (blackJackGame.getPlayer().equals("player")) {
-            for (int i = 0; i < 8; i++) {
-                if (playerCards[i].getVisibility() == View.INVISIBLE) {
-
-                    //assign image corresponding to hit_card here
-
-                    playerScore_int += hit_card.point_value;
-                    playerScore.setText(playerScore_int);
-                    playerCards[i].setVisibility(View.VISIBLE);
-                    return;
-                }
-            }
+        blackJackGame.hit(blackJackGame.getPlayer());
+        if(blackJackGame.hit_count == 3) {
+            hitButton.setEnabled(false);
         }
-
-        if (blackJackGame.getPlayer().equals("dealer")){
-            for(int i=0; i < 8; i++) {
-                if(dealerCards[i].getVisibility() == View.INVISIBLE) {
-
-                    //assign image corresponding to hit_card here
-
-                    dealerScore_int += hit_card.point_value;
-                    dealerScore.setText(dealerScore_int);
-                    dealerCards[i].setVisibility(View.VISIBLE);
-                    return;
-                }
+        if(blackJackGame.isOver()){
+            AlertDialog.Builder builder = new AlertDialog.Builder(); //TODO add parameter
+            if(blackJackGame.getWinner().equals("player")) {
+                builder.setMessage(blackJackGame.getWinner() + " Won!").setTitle("WINNER!");
             }
+            else builder.setMessage(blackJackGame.getWinner() + " Won!").setTitle("GAME OVER");
+            AlertDialog dialog = builder.create();
+            //enable the dialog later
         }
     }
 
     public void stop(View view) {
         blackJackGame.swapPlayer();
+        hitButton.setEnabled(true);
     }
 }
