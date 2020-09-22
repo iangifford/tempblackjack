@@ -1,21 +1,22 @@
 package com.jackcannon.blackjack;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Game {
 
     Deck deck;
     String current_player;
-    TextView[] playerCards;
-    TextView[] dealerCards;
+    ImageView[] playerCards;
+    ImageView[] dealerCards;
     TextView playerScore;
     TextView dealerScore;
     int playerScore_int;
     int dealerScore_int;
     int hit_count;
 
-    public Game(TextView[] playerCards, TextView[] dealerCards, TextView playerScore, TextView dealerScore) {
+    public Game(ImageView[] playerCards, ImageView[] dealerCards, TextView playerScore, TextView dealerScore) {
         this.current_player = "player";
         this.deck = new Deck();
         this.playerCards = playerCards;
