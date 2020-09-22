@@ -61,9 +61,11 @@ public class Deck {
         deck[49] = new Card("Diamonds", "King", 10, R.drawable.cards_50);
         deck[50] = new Card("Diamonds", "Queen", 10, R.drawable.cards_51);
         deck[51] = new Card("Diamonds", "Ace", 11, R.drawable.cards_52);
+    }
+
+    public void shuffle(){
 
         //TODO WRITE A SHUFFLE ALGORITHM FOR THE CARDS
 
     }
-
 }

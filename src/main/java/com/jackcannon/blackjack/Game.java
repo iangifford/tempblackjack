@@ -1,6 +1,7 @@
 package com.jackcannon.blackjack;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,17 +17,22 @@ public class Game {
     int playerScore_int;
     int dealerScore_int;
     int hit_count;
+    Button hitButton;
+    Button stopButton;
 
-    public Game(ImageView[] playerCards, ImageView[] dealerCards, TextView playerScore, TextView dealerScore) {
+    public Game(ImageView[] playerCards, ImageView[] dealerCards, TextView playerScore, TextView dealerScore, Button hitButton, Button stopButton) {
         this.current_player = "player";
         this.deck = new Deck();
         this.playerCards = playerCards;
         this.dealerCards = dealerCards;
         this.playerScore = playerScore;
         this.dealerScore = dealerScore;
+        this.hitButton = hitButton;
+        this.stopButton = stopButton;
         this.playerScore_int = 0;
         this.dealerScore_int = 0;
         this.hit_count = 0;
+        deck.shuffle();
     }
 
     public void swapPlayer() {
@@ -46,6 +52,11 @@ public class Game {
     public void executeDealerTurn() {
 
         //TODO implement logic for random dealer play
+        /*
+            hitButton.setEnabled(true);
+            stopButton.setEnabled(true);
+        }
+         */
 
     }
 
@@ -74,7 +85,7 @@ public class Game {
         if (player.equals("dealer")){
             for(int i=0; i < 8; i++) {
                 if(dealerCards[i].getVisibility() == View.INVISIBLE) {
-                    playerCards[i].setImageResource(resource);
+                    dealerCards[i].setImageResource(resource);
                     dealerScore_int += hit_card.point_value;
                     dealerScore.setText(dealerScore_int);
                     dealerCards[i].setVisibility(View.VISIBLE);
@@ -90,11 +101,16 @@ public class Game {
         for(int i=0; i < 8; i++) {
             playerCards[i].setVisibility(View.INVISIBLE);
             dealerCards[i].setVisibility(View.INVISIBLE);
+            playerCards[i].setImageResource(0);
+            dealerCards[i].setImageResource(0);
         }
 
         playerScore_int = 0;
         dealerScore_int = 0;
         playerScore.setText(playerScore_int);
         dealerScore.setText(dealerScore_int);
+
+        deck = new Deck();
+        deck.shuffle();
     }
 }
