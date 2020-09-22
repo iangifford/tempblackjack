@@ -42,31 +42,30 @@ public class Game {
 
     public Card dealCard() {
 
-        //implement method to return the next card from the deck
+        //TODO implement method to return the next card from the deck
 
-        return next_card;
     }
 
     public boolean isOver() {
 
-        //implement method to determine if the game is over or not
+        //TODO implement method to determine if the game is over or not
 
     }
 
     public String getWinner() {
 
-        //implement method to return the winner (called when the game is over)
+        //TODO implement method to return the winner (called when the game is over)
 
     }
 
     public void hit(String player) {
         Card hit_card = dealCard();
 
-        if (getPlayer().equals("player")) {
+        if (player.equals("player")) {
             for (int i = 0; i < 8; i++) {
                 if (playerCards[i].getVisibility() == View.INVISIBLE) {
 
-                    //assign image corresponding to hit_card here
+                    //TODO assign image corresponding to hit_card here
 
                     playerScore_int += hit_card.point_value;
                     playerScore.setText(playerScore_int);
@@ -76,11 +75,11 @@ public class Game {
             }
         }
 
-        if (getPlayer().equals("dealer")){
+        if (player.equals("dealer")){
             for(int i=0; i < 8; i++) {
                 if(dealerCards[i].getVisibility() == View.INVISIBLE) {
 
-                    //assign image corresponding to hit_card here
+                    //TODO assign image corresponding to hit_card here
 
                     dealerScore_int += hit_card.point_value;
                     dealerScore.setText(dealerScore_int);

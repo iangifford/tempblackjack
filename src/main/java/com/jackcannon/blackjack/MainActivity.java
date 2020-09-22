@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else builder.setMessage(blackJackGame.getWinner() + " Won!").setTitle("GAME OVER");
             AlertDialog dialog = builder.create();
-            //enable the dialog later
+            //TODO enable the dialog later
         }
     }
 
