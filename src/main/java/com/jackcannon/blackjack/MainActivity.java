@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     Button hitButton;
     Button stopButton;
 
+
     /**
      * On Create Method
      * Initializes the main View and instantiates other view objects for later use
