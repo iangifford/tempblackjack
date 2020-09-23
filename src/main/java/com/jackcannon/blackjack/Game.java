@@ -68,7 +68,7 @@ public class Game {
 
     public void hit(String player) {
         Card hit_card = dealCard();
-        int resource = hit_card.getImage();
+        int resource = hit_card.image_resource;
 
         if (player.equals("player")) {
             for (int i = 0; i < 8; i++) {

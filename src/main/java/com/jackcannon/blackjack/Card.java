@@ -13,8 +13,4 @@ public class Card {
         this.point_value = point_value;
         this.image_resource = image_resource;
     }
-
-    public int getImage() {
-        return image_resource;
-    }
 }
